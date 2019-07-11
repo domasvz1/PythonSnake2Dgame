@@ -1,7 +1,12 @@
 import pygame
 import snake
 
-#--- 2. FUNCTIONS
+
+# on [0.3] This needs to be updated and more documented
+# Had to rename both files to .py because new python scripts cant read ".pyw"
+# No need to change menu, for know if seems to be working
+
+
 def menu_reset():
     pygame.display.set_mode( display_size )
     pygame.display.set_caption( 'Snake' )
@@ -100,20 +105,14 @@ class Menu:
                 f.function()
                 break
       
-
-
-#--- 4. INITIALISING
-# 4.1 pygame.init
 pygame.init()
-# 4.2 display
 display_size = [ 800, 850 ]
 DISPLAY = pygame.display.set_mode( display_size )
 pygame.display.set_caption( "Game name..." )
-# 4.3 clock
 game_clock = pygame.time.Clock()
 FPS = 60
 
-#--- 5. INITIALISING GAME VALUES
+# creating tuples for different levels and menu choices
 main_menu = Menu( 
                   buttons = [
                              ['Choose level', go_to_lvl   ],
@@ -148,7 +147,6 @@ active_window = main_menu
 RUNNING = True
 while RUNNING:
 
-    # 6.1 UPDATE FUNCTIONS
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
@@ -158,16 +156,8 @@ while RUNNING:
             go_to_quit()
 
 
-    # 6.2 LOGICAL TESTING
-
-    # 6.3 DRAWING
-    #DISPLAY.fill( (0,0,0) )
     active_window.draw( DISPLAY, pygame.mouse.get_pos() )
-
-    # 6.4 DELAY FRAMERATE
     game_clock.tick( FPS )
-
-    # 6.5 UPDATE THE SCREEN
     pygame.display.update()
 
 #--- 7. EXITING GAME
